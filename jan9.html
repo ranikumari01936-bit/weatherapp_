@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Container -->
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>🌤 Weather App</h1>
+
+      <div class="controls">
+        <input type="text" id="cityInput" placeholder="Search city..." aria-label="City name">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+        <button id="locationBtn" title="Use current location">
+          <i class="fas fa-location-crosshairs"></i>
+        </button>
+        <button id="themeToggle" title="Toggle theme">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader hidden"></div>
+
+    <!-- Error Message -->
+    <p id="error" class="error hidden"></p>
+
+    <!-- Weather Content -->
+    <main id="weather" class="hidden">
+
+      <!-- Current Weather Card -->
+      <section class="card current">
+        <div>
+          <h2 id="location"></h2>
+          <p id="localTime"></p>
+          <div class="temp">
+            <span id="temperature"></span>
+            <button id="unitToggle">°C / °F</button>
+          </div>
+          <p id="condition"></p>
+        </div>
+        <img id="weatherIcon" alt="Weather icon">
+      </section>
+
+      <!-- Details -->
+      <section class="card details">
+        <div>Feels Like: <span id="feelsLike"></span></div>
+        <div>Humidity: <span id="humidity"></span></div>
+        <div>Wind: <span id="wind"></span></div>
+        <div>Pressure: <span id="pressure"></span></div>
+        <div>Visibility: <span id="visibility"></span></div>
+        <div>UV Index: <span id="uv"></span></div>
+        <div>AQI: <span id="aqi"></span></div>
+        <div>Sunrise: <span id="sunrise"></span></div>
+        <div>Sunset: <span id="sunset"></span></div>
+      </section>
+
+      <!-- Hourly Forecast -->
+      <section class="card">
+        <h3>Next 24 Hours</h3>
+        <div id="hourly" class="forecast-row"></div>
+      </section>
+
+      <!-- Daily Forecast -->
+      <section class="card">
+        <h3>7-Day Forecast</h3>
+        <div id="daily"></div>
+      </section>
+
+      <!-- Alerts -->
+      <section id="alerts" class="card hidden"></section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+</style>
+</head>
+</body>
