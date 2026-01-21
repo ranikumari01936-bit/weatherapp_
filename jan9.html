@@ -13,15 +13,19 @@
 
   <style>
 :root {
-  --bg: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'), linear-gradient(135deg, #74ebd5, #9face6);
+  --bg: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'), linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --card-bg: rgba(255,255,255,0.25);
   --text: #111;
+  --shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --border: rgba(255,255,255,0.18);
 }
 
 body.dark {
-  --bg: url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'), linear-gradient(135deg, #141E30, #243B55);
+  --bg: url('https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'), linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
   --card-bg: rgba(0,0,0,0.35);
   --text: #fff;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --border: rgba(255,255,255,0.1);
 }
 
 * {
@@ -71,6 +75,14 @@ button {
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .card {
@@ -80,6 +92,8 @@ button {
   padding: 1rem;
   margin-top: 1rem;
   animation: fadeIn 0.4s ease-in;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .current {
@@ -133,9 +147,33 @@ button {
   to { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; }
+.tracker-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tracker-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.tracker-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  position: relative;
+}
+
+.tracker-item button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
 }
   </style>
 </head>
@@ -215,6 +253,16 @@ button {
 
       <!-- Alerts -->
       <section id="alerts" class="card hidden"></section>
+
+      <!-- Weather Tracker -->
+      <section class="card">
+        <h3>Weather Tracker</h3>
+        <div class="tracker-controls">
+          <input type="text" id="trackerInput" placeholder="Add city to track...">
+          <button id="addTrackerBtn"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="tracker" class="tracker-list"></div>
+      </section>
 
     </main>
   </div>
