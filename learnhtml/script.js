@@ -5,7 +5,7 @@ window.onload = function()
 };
 
 // Attach event listener to the button
-document.getElementById("boldBtn").addEventListener("click", function()
- {
-  document.getElementById("demo").style.fontWeight = "bold";
-});
+document.getElementById("boldBtn").addEventListener("click", function () 
+{
+        document.getElementById("demo").style.fontWeight = "bold";
+    });
